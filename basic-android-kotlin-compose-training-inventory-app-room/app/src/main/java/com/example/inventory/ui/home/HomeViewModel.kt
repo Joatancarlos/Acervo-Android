@@ -14,20 +14,21 @@
  * limitations under the License.
  */
 
-package com.example.inventory.data
+package com.example.inventory.ui.home
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
+import androidx.lifecycle.ViewModel
+import com.example.inventory.data.Item
 
 /**
- * Entity data class represents a single row in the database.
+ * ViewModel to retrieve all items in the Room database.
  */
-@Entity(tableName = "items")
-data class Item(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    val name: String,
-    val price: Double,
-    val quantity: Int
-)
+class HomeViewModel() : ViewModel() {
+    companion object {
+        private const val TIMEOUT_MILLIS = 5_000L
+    }
+}
+
+/**
+ * Ui State for HomeScreen
+ */
+data class HomeUiState(val itemList: List<Item> = listOf())

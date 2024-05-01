@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-package com.example.inventory.data
-
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
+package com.example.inventory.ui.navigation
 
 /**
- * Entity data class represents a single row in the database.
+ * Interface to describe the navigation destinations for the app
  */
-@Entity(tableName = "items")
-data class Item(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    val name: String,
-    val price: Double,
-    val quantity: Int
-)
+interface NavigationDestination {
+    /**
+     * Unique name to define the path for a composable
+     */
+    val route: String
+
+    /**
+     * String resource id to that contains title to be displayed for the screen.
+     */
+    val titleRes: Int
+}

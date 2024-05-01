@@ -16,9 +16,6 @@
 
 package com.example.inventory.data
 
-/**
- * Repository that provides insert, update, delete, and retrieve of [Item] from a given data source.
- */
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -50,3 +47,4 @@ interface ItemsRepository {
      */
     suspend fun updateItem(item: Item)
 }
+
