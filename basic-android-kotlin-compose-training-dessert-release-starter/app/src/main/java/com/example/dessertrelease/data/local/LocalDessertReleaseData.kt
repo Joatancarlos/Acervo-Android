@@ -13,15 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    extra.apply {
-        set("nav_version", "2.5.3")
-        set("room_version", "2.5.1")
-    }
-}
-plugins {
-    id("com.android.application") version "8.1.1" apply false
-    id("com.android.library") version "8.1.1" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.10" apply false
+package com.example.dessertrelease.data.local
+
+/*
+ * Set data for Android Release dessert name
+ * the list contain distinct sequential dessert name
+ */
+object LocalDessertReleaseData {
+    val dessertReleases = listOf(
+        "Cupcake",
+        "Donut",
+        "Eclair",
+        "Froyo",
+        "Gingerbread",
+        "Honeycomb",
+        "Ice Cream Sandwich",
+        "Jelly Bean",
+        "KitKat",
+        "Lollipop",
+        "Marshmallow",
+        "Nougat",
+        "Oreo",
+        "Pie",
+        "Quince Tart",
+        "Red Velvet Cake",
+        "Snow Cone",
+        "Tiramisu"
+    )
 }

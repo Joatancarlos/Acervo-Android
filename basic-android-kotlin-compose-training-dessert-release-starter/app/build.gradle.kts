@@ -15,16 +15,15 @@
  */
 plugins {
     id("com.android.application")
-    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.example.busschedule"
+    namespace = "com.example.dessertrelease"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.busschedule"
+        applicationId = "com.example.dessertrelease"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -46,11 +45,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
@@ -65,22 +64,19 @@ android {
     }
 }
 
-
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2023.05.01"))
+
+    implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.navigation:navigation-compose:${rootProject.extra["nav_version"]}")
-
-    implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
-    implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
-    ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${rootProject.extra["lifecycle_version"]}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${rootProject.extra["lifecycle_version"]}")
 
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }

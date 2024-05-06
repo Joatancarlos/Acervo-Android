@@ -13,15 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    extra.apply {
-        set("nav_version", "2.5.3")
-        set("room_version", "2.5.1")
-    }
-}
-plugins {
-    id("com.android.application") version "8.1.1" apply false
-    id("com.android.library") version "8.1.1" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.10" apply false
+package com.example.busschedule
+
+import android.app.Application
+import com.example.busschedule.data.AppDatabase
+
+class BusScheduleApplication: Application() {
+    val database: AppDatabase by lazy { AppDatabase.getDatabase(this) }
 }

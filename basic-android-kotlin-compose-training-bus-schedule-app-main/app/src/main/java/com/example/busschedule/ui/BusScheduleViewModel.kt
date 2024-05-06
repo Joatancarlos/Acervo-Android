@@ -17,29 +17,29 @@ package com.example.busschedule.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.busschedule.BusScheduleApplication
 import com.example.busschedule.data.BusSchedule
 import com.example.busschedule.data.BusScheduleDao
-import com.example.busschedule.data.ScheduleDatabase
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 
-class BusScheduleViewModel(
-    private val busScheduleDao: BusScheduleDao
-): ViewModel() {
-
-    // Get example bus schedule
-    fun getFullSchedule(): Flow<List<BusSchedule>> = busScheduleDao.getAllItems()
-
-    // Get example bus schedule by stop
-    fun getScheduleFor(stopName: String): Flow<List<BusSchedule>> = busScheduleDao.getByStopName(stopName)
+/*
+ * View model for Bus Schedule
+ * contains methods to access Room DB through [busScheduleDao]
+ */
+class BusScheduleViewModel(private val busScheduleDao: BusScheduleDao): ViewModel() {
+    // Get full bus schedule from Room DB
+    fun getFullSchedule(): Flow<List<BusSchedule>> = busScheduleDao.getAll()
+    // Get bus schedule based on the stop name from Room DB
+    fun getScheduleFor(stopName: String): Flow<List<BusSchedule>> =
+        busScheduleDao.getByStopName(stopName)
 
     companion object {
         val factory : ViewModelProvider.Factory = viewModelFactory {
             initializer {
-                val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as BusScheduleApplication)
+                val application = (this[APPLICATION_KEY] as BusScheduleApplication)
                 BusScheduleViewModel(application.database.busScheduleDao())
             }
         }
